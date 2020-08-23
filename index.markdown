@@ -27,11 +27,9 @@ nav_exclude: true
     ```
 
 2.  Browser: <http://localhost:4000>
-
-    - Shows the site home page with Minima layout
+    - Shows the site home page with `Minima` layout
 
 3.  GitHub Desktop:
-
     - Create repository `just-the-docs-tests`
 
 4.  Shell:
@@ -40,12 +38,12 @@ nav_exclude: true
     ```
     
 5.  GitHub Desktop:
-
     - Publish repository `just-the-docs-tests`
 
-6.  Browser:
-
-    - GitHub repository settings: GitHub Pages: Source: master (Save)
+6.  Browser: GitHub repository: Settings:
+    - GitHub Pages: Source: `master` (Save)
+    - Change repository visibility: `public`
+    - The site is published at <https://pdmosses.github.io/just-the-docs-tests/>
 
 ## Use Just the Docs as a remote theme
 
@@ -106,8 +104,10 @@ nav_exclude: true
     ```
 
 5.  Browser: <http://localhost:4000/just-the-docs-tests/>
-
     - Shows the site home page with Just the Docs layout
+
+6.  GitHub Desktop:
+    - Push
 
 
 [Just the Docs Quickstart]: https://pmarsceill.github.io/just-the-docs/#quick-start-use-as-a-github-pages-remote-theme
