@@ -126,10 +126,12 @@ The following sections are a log of the creation of this website, with links to 
 
 ## Use Jekyll Actions on GitHub Pages with Jekyll 4
 
-[Jekyll Actions], [Jekyll Actions Demo]
+[Jekyll Actions], [Jekyll Actions Demo], [Deploy your Jekyll blog using Github Pages and Github Actions]
 
 The `Gemfile` is used by the action, so make sure it is **not** in `.gitignore`
-(in contrast to `Gemfile.lock`).
+(in contrast to `Gemfile.lock`, which should be ignored by git).
+
+**N.B.** The following steps **overwrite** the `gh-pages` branch!
 
 1.  Browser: GitHub repository: Actions:
     - Click on the link to `set up a workflow yourself`
@@ -192,6 +194,8 @@ The `Gemfile` is used by the action, so make sure it is **not** in `.gitignore`
 [Jekyll Actions]: https://jekyllrb.com/docs/continuous-integration/github-actions/
 
 [Jekyll Actions Demo]: https://github.com/MichaelCurrin/jekyll-actions-quickstart
+
+[Deploy your Jekyll blog using Github Pages and Github Actions]: https://sujaykundu.com/blog/post/deploy-jekyll-using-github-pages-and-github-actions#/
 
 [GitHub Profile]: https://github.com/settings/profile
 
