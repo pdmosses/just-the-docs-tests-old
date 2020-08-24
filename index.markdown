@@ -6,6 +6,10 @@ nav_exclude: true
 # Tests for Just the Docs
 {: .no_toc }
 
+Currently the only [tests](docs/) are simple [grandchildren tests](docs/grandchildren/).
+
+The following sections are a log of the creation of this website, with links to some relevant resources.
+
 <details open markdown="block">
    <summary>
      Table of contents
