@@ -10,6 +10,8 @@ Currently the only [tests](docs/) are simple [grandchildren tests](docs/grandchi
 
 The following sections are a log of the creation of this website, with links to some relevant resources.
 
+[Bug reports and suggestions for improvement](https://github.com/pdmosses/just-the-docs-tests/issues) are welcome!
+
 <details open markdown="block">
    <summary>
      Table of contents
@@ -47,7 +49,9 @@ The following sections are a log of the creation of this website, with links to 
 6.  Browser: GitHub repository: Settings:
     - GitHub Pages: Source: `master` (Save)
     - Change repository visibility: `public`
-    - The site is published at <https://pdmosses.github.io/just-the-docs-tests/>
+
+7. Browser: <https://pdmosses.github.io/just-the-docs-tests/>
+    - The site appears on GitHub Pages
 
 ## Use Just the Docs as a remote theme
 
@@ -63,7 +67,7 @@ The following sections are a log of the creation of this website, with links to 
     url: "" # the base hostname & protocol for your site, e.g. http://example.com
     ```
     
-    [Jekyll remote theme]
+    Replace the Minima theme by Just the Docs [Jekyll remote theme]\:
     ```yaml
     # Build settings
     # theme: minima
@@ -73,7 +77,7 @@ The following sections are a log of the creation of this website, with links to 
       - jekyll-remote-theme
     ```
     
-    [Jekyll front matter defaults]:
+    Avoid need for `layout: default` using [Jekyll front matter defaults]\:
     ```yaml
     defaults:
       -
@@ -83,8 +87,11 @@ The following sections are a log of the creation of this website, with links to 
           layout: "default"
     ```
 
-2.  Edit `Gemfile`:
-    ```
+2.  Edit `Gemfile`: replace the Minima theme by Just the Docs remote theme
+    ```ruby
+    # Happy Jekylling!
+    gem "jekyll", "~> 4.1.1"
+    # This is the default theme for new Jekyll sites. You may change this to anything you like.
     # gem "minima", "~> 2.5"
     gem "jekyll-remote-theme"
     gem "just-the-docs"
@@ -113,6 +120,66 @@ The following sections are a log of the creation of this website, with links to 
 6.  GitHub Desktop:
     - Push
 
+7.  Browser: <https://pdmosses.github.io/just-the-docs-tests/>
+    - The site appears on GitHub Pages
+    - The site is automatically built using Jekyll 3.8.5
+
+## Use Jekyll Actions on GitHub Pages with Jekyll 4
+
+[Jekyll Actions], [Jekyll Actions Demo]
+
+The `Gemfile` is used by the action, so make sure it is **not** in `.gitignore`
+(in contrast to `Gemfile.lock`).
+
+1.  Browser: GitHub repository: Actions:
+    - Click on the link to `set up a workflow yourself`
+    - Change the file name from `main.yml` to `github-pages.yml`
+    - Replace the file contents by the following YAML code from [Jekyll Actions]
+      {% raw %}
+      ```yaml
+      name: Build and deploy Jekyll site to GitHub Pages
+
+      on:
+        push:
+          branches:
+            - master
+
+      jobs:
+        github-pages:
+          runs-on: ubuntu-16.04
+          steps:
+            - uses: actions/checkout@v2
+            - uses: helaili/jekyll-action@2.0.3
+              env:
+                JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
+      ```
+      {% endraw %}
+    - Optional: replace `ubuntu-16.04` by `ubuntu-latest`
+    - Optional: replace `helaili/jekyll-action@2.0.3` by `helaili/jekyll-action`
+    - Click `Start commit` then `Commit new file`
+
+2.  Browser: [GitHub profile]\: Developer Settings: [Personal Access Tokens]
+    - Click `Generate new token`
+    - Note: `GitHub Actions`
+    - Select scopes: `repo`
+    - Click `Generate new token`
+    - Copy the displayed token
+
+3.  Browser: GitHub repository: Settings: Secrets:
+    - Click `New secret`
+    - Name: `JEKYLL_PAT`
+    - Value: Paste the token
+    - Click `Add secret`
+
+4. Browser: GitHub repository:
+    - Click on the status symbol (tick or X) in the latest commit information
+    - Click on `Details`
+    - A successful build: ![screenshot](assets/images/workflow-details.png)
+
+5.  Browser: <https://pdmosses.github.io/just-the-docs-tests/>
+    - The site appears on GitHub Pages
+    - The site is now built using **Jekyll 4**, as specified in `Gemfile`
+
 
 [Just the Docs Quickstart]: https://pmarsceill.github.io/just-the-docs/#quick-start-use-as-a-github-pages-remote-theme
 
@@ -121,3 +188,11 @@ The following sections are a log of the creation of this website, with links to 
 [Jekyll front matter defaults]: https://jekyllrb.com/docs/configuration/front-matter-defaults/
 
 [Prevent `favicon.ico` requests]: https://stackoverflow.com/questions/1321878/how-to-prevent-favicon-ico-requests
+
+[Jekyll Actions]: https://jekyllrb.com/docs/continuous-integration/github-actions/
+
+[Jekyll Actions Demo]: https://github.com/MichaelCurrin/jekyll-actions-quickstart
+
+[GitHub Profile]: https://github.com/settings/profile
+
+[Personal Access Tokens]: https://github.com/settings/tokens
