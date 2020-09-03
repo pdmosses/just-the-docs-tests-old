@@ -67,3 +67,13 @@ defaults:
 aux_links:
   "Just the Docs Tests on GitHub":
     - "//github.com/pdmosses/just-the-docs-tests"
+
+mathjax:
+  source: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML
+  config: 'MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } })'
+
+# Uncomment to test fixes for list alignment:
+# color_scheme: fix-lists
+
+# Uncomment to test fixes for visited code links:
+# color_scheme: fix-visited

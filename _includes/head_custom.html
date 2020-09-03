@@ -1,1 +1,10 @@
 <link rel="icon" href="data:,">
+
+{% if page.mathjax %}
+  <script type="text/x-mathjax-config">
+    {{ site.mathjax.config }};
+  </script>
+  <script type="text/javascript" async 
+    src="{{ site.mathjax.source }}">
+  </script>
+{% endif %}

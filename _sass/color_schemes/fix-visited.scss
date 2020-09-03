@@ -1,0 +1,5 @@
+// Correction for the issue illustrated in /docs/css/visited.md
+
+a:visited code {
+  border-color: $border-color;
+}

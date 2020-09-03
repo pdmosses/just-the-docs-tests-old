@@ -1,22 +1,28 @@
 ---
 title: Visited code links
 parent: Tests
+nav_order: 3
 ---
 # Visited code links
 
-On Safari (13.1.2, macOS 10.15.6) code in a visited link has a dark border.
-This doesn't happen in Firefox (79.0).
+On Safari (13.1.2, macOS 10.15.6) code in a visited link has a dark border. This doesn't happen in Firefox (79.0).
 
-`some unlinked code`
+The following setting in `_config.yml` fixes the issue in Safari:
 
-[`some code in a link`](#visited-code-links)
+```yaml
+color_scheme: fix-visited
+```
 
-[some plain text in a link](#visited-code-links)
-
-The following CSS fixes the issue:
+by loading the following CSS:
 
 ```css
 a:visited code {
   border-color: $border-color;
 }
 ```
+
+`some unlinked code`
+
+[`some code in a link`](#visited-code-links)
+
+[some plain text in a link](#visited-code-links)
