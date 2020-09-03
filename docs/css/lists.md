@@ -16,6 +16,8 @@ The following setting in `_config.yml` loads the custom CSS in [`fix-lists.scss`
 color_scheme: fix-lists
 ```
 
+as shown in this [PDF]({{ "/assets/images/fix-lists.pdf" | absolute_url }}).
+
 [Kramdown syntax]: https://kramdown.gettalong.org/syntax.html
 
 [`fix-lists.scss`]: {{ "/assets/css/fix-lists.scss.txt" | absolute_url }}
