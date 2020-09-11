@@ -57,54 +57,54 @@ A [kramdown extension for admonition blocks](https://github.com/gettalong/kramdo
 
 ## Using IALs in kramdown with [custom styles](https://github.com/pmarsceill/just-the-docs/issues/171#issuecomment-538794741)
 
-Do not blah blah blah...
 {: .info }
-
 Do not blah blah blah...
+
 {: .warn }
-
 Do not blah blah blah...
+
 {: .danger }
+Do not blah blah blah...
 
 The markup is neat enough for a single paragraph:
 
 ```markdown
-Do not blah blah blah...
 {: .info }
+Do not blah blah blah...
 ```
 
 For multiple paragraphs the markup would not look so nice:
 
 ```markdown
+{: .info }
 <div markdown="block">
 Do not blah blah blah...
 
 Do not blah blah blah...
 </div>
-{: .info }
 ```
 
+{: .info }
 <div markdown="block">
 Do not blah blah blah...
 
 Do not blah blah blah...
 </div>
-{: .info }
 
 Block quotes allow multiple paragraphs (etc.) without HTML tags:
 
 ```markdown
+{: .info }
 > Do not blah blah blah...
 >
 > Do not blah blah blah...
-{: .info }
 ```
 
 With the left margin removed, that produces:
 
+{: .info }
 > Do not blah blah blah...
 >
 > Do not blah blah blah...
-{: .info }
 
 It seems unlikely that a block quote would otherwise be used as the body of an admonition, so perhaps that is the simplest markup style for use in Just the Docs?
