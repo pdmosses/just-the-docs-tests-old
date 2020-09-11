@@ -5,7 +5,9 @@ nav_order: 3
 ---
 # Admonitions
 
-Various markup systems for documentation websites support *admonitions*, *alerts*, or *callouts*. Some examples:
+Support for common markdown callouts like NOTE, TIP, HINT has been [requested](https://github.com/pmarsceill/just-the-docs/issues/171) as an enhancement for Just the Docs.
+
+Various other platforms for documentation websites support *admonitions*, *alerts*, or *callouts*. Some examples:
 
 - [Python-Markdown](https://python-markdown.github.io/extensions/admonition/#admonition)
   ```markdown
@@ -73,7 +75,7 @@ The markup is neat enough for a single paragraph:
 Do not blah blah blah...
 ```
 
-For multiple paragraphs the markup would not look so nice:
+But that doesn't work for multiple paragraphs. The following workaround using HTML would not look so nice:
 
 ```markdown
 {: .info }
@@ -91,7 +93,7 @@ Do not blah blah blah...
 Do not blah blah blah...
 </div>
 
-Block quotes allow multiple paragraphs (etc.) without HTML tags:
+Fortunately, block quotes allow multiple paragraphs (etc.) without HTML tags:
 
 ```markdown
 {: .info }
@@ -100,11 +102,26 @@ Block quotes allow multiple paragraphs (etc.) without HTML tags:
 > Do not blah blah blah...
 ```
 
-With the left margin removed, that produces:
+The margins need adjusting. For example:
+```sass
+blockquote.info {
+  margin-left: 0;
+  
+  > p:first-child {
+    margin-top: 0;
+  }
+    
+  > p:last-child {
+    margin-bottom: 0;
+  }
+}
+```
+
+Then we get:
 
 {: .info }
 > Do not blah blah blah...
 >
 > Do not blah blah blah...
 
-It seems unlikely that a block quote would otherwise be used as the body of an admonition, so perhaps that is the simplest markup style for use in Just the Docs?
+It seems unlikely that a block quote would otherwise be wanted as the body of an admonition, so perhaps that is the simplest markup style for use in kramdown?
