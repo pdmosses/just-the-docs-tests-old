@@ -25,6 +25,8 @@ $$
 \end{align*}
 $$
 
+To see the $$\LaTeX$$ source of a formula, right-click anywhere on it.
+
 Use of MathJax in Markdown is illustrated by a series of [tests](#testing-mathjax).
 
 ## Configuration

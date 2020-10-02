@@ -87,6 +87,7 @@ The following sections are a log of the creation of this website, with links to 
         values:
           layout: "default"
     ```
+    **Warning:** Using `path: ""` above corrupts files in the `assets` folder (also when restricted to `type: "pages"`).
 
 2.  Edit `Gemfile`: replace the Minima theme by Just the Docs remote theme
     ```ruby
@@ -97,6 +98,7 @@ The following sections are a log of the creation of this website, with links to 
     gem "jekyll-remote-theme"
     gem "just-the-docs"
     ```
+    **Warning:** The `github-pages` gem currently requires Jekyll 3, and cannot be installed together with Jekyll 4.
 
 3.  Files:
     - delete `about.markdown`
