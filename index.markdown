@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Home
 nav_exclude: true
 ---
@@ -77,12 +78,12 @@ The following sections are a log of the creation of this website, with links to 
       - jekyll-remote-theme
     ```
     
-    Avoid need for `layout: default` using [Jekyll front matter defaults]\:
+    Avoid need for `layout: default` in `docs` pages using [Jekyll front matter defaults]\:
     ```yaml
     defaults:
       -
         scope:
-          path: "" # an empty string here means all files in the project
+          path: "docs" # an empty string here means all files in the project
         values:
           layout: "default"
     ```
