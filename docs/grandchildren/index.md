@@ -1,6 +1,6 @@
 ---
 title: Grandchildren
-parent: Tests
+parent: Obsolete Tests
 nav_order: 1
 ---
 

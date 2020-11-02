@@ -1,8 +1,15 @@
+{%- comment -%}
+  MathJax: See https://docs.mathjax.org/en/latest/web/configuration.html
+{%- endcomment -%}
+
 {% if page.mathjax %}
-  <script type="text/x-mathjax-config">
-    {{ site.mathjax.config }};
-  </script>
-  <script type="text/javascript" async 
-    src="{{ site.mathjax.source }}">
-  </script>
+  <script>MathJax = {{ site.mathjax.config }};</script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="{{ site.mathjax.source }}"></script>
 {% endif %}
+
+{%- comment -%}
+  Favicon: See https://stackoverflow.com/questions/1321878/how-to-prevent-favicon-ico-requests
+{%- endcomment -%}
+
+<link rel="icon" href="data:,">

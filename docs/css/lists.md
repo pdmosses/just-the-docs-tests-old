@@ -1,6 +1,6 @@
 ---
 title: Lists
-parent: Tests
+parent: Obsolete Tests
 nav_order: 2
 mathjax: true
 ---

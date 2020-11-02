@@ -27,6 +27,8 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
 # github_username:  jekyll
 
+# logo: "/assets/images/just-the-docs.png"
+
 # Build settings
 # theme: minima
 remote_theme: pmarsceill/just-the-docs
@@ -70,8 +72,12 @@ aux_links:
     - "//github.com/pdmosses/just-the-docs-tests"
 
 mathjax:
-  source: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML
-  config: 'MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } })'
+  source: 
+    "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+  config:
+    "{ tex: { tags: 'ams' },
+       svg: { fontCache: 'global', displayAlign: 'left', displayIndent: '2em' }
+    }"
 
 # Uncomment to test fixes for list alignment:
 # color_scheme: fix-lists

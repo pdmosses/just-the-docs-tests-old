@@ -1,6 +1,6 @@
 ---
 title: Visited code links
-parent: Tests
+parent: Obsolete Tests
 nav_order: 5
 ---
 # Visited code links
