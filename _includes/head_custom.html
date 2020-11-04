@@ -1,11 +1,17 @@
 {%- comment -%}
-  MathJax: See https://docs.mathjax.org/en/latest/web/configuration.html
+  MathJax: See https://docs.mathjax.org/en/v2.7-latest/start.html
+  
+  For loading and configuration to use version 3, see:
+  https://docs.mathjax.org/en/latest/web/configuration.html
 {%- endcomment -%}
 
 {% if page.mathjax %}
-  <script>MathJax = {{ site.mathjax.config }};</script>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="{{ site.mathjax.source }}"></script>
+<script type="text/x-mathjax-config">
+  {{ site.mathjax.config }};
+</script>
+<script type="text/javascript" async 
+  src="{{ site.mathjax.source }}">
+</script>
 {% endif %}
 
 {%- comment -%}
