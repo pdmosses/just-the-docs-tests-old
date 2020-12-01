@@ -59,10 +59,12 @@ A [kramdown extension for admonition blocks](https://github.com/gettalong/kramdo
 
 ## Using IALs in kramdown with [custom styles](https://github.com/pmarsceill/just-the-docs/issues/171#issuecomment-538794741)
 
-{: .info }
+See <https://github.com/pdmosses/just-the-docs/blob/callouts/docs/configuration.md#callouts> for how to configure various callouts when using the feature branch for [PR #466](https://github.com/pdmosses/just-the-docs/tree/callouts) as a remote theme. (This test site uses custom CSS where the callouts are not configurable.)
+
+{: .note }
 Do not blah blah blah...
 
-{: .warn }
+{: .caution }
 Do not blah blah blah...
 
 {: .danger }
@@ -71,55 +73,22 @@ Do not blah blah blah...
 The markup is neat enough for a single paragraph:
 
 ```markdown
-{: .info }
+{: .note }
 Do not blah blah blah...
 ```
 
-But that doesn't work for multiple paragraphs. The following workaround using HTML would not look so nice:
+But that doesn't work for multiple paragraphs. Fortunately, block quotes allow multiple paragraphs (etc.):
 
 ```markdown
-{: .info }
-<div markdown="block">
-Do not blah blah blah...
-
-Do not blah blah blah...
-</div>
-```
-
-{: .info }
-<div markdown="block">
-Do not blah blah blah...
-
-Do not blah blah blah...
-</div>
-
-Fortunately, block quotes allow multiple paragraphs (etc.) without HTML tags:
-
-```markdown
-{: .info }
+{: .note }
 > Do not blah blah blah...
 >
 > Do not blah blah blah...
 ```
 
-The margins need adjusting. For example:
-```sass
-blockquote.info {
-  margin-left: 0;
-  
-  > p:first-child {
-    margin-top: 0;
-  }
-    
-  > p:last-child {
-    margin-bottom: 0;
-  }
-}
-```
-
 Then we get:
 
-{: .info }
+{: .note }
 > Do not blah blah blah...
 >
 > Do not blah blah blah...
