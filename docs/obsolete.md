@@ -1,7 +1,7 @@
 ---
 title: Obsolete Tests
 has_children: true
-nav_order: 2
+nav_exclude: true
 ---
 
 # Obsolete Tests

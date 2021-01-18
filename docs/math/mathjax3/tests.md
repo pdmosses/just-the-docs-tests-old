@@ -1,14 +1,14 @@
 ---
-title: MathJax Tests
-parent: MathJax
-grand_parent: Tests
+title: MathJax v3 Tests
+parent: MathJax v3
+grand_parent: Math
 nav_order: 2
-mathjax: true
+math: mathjax3
 ---
 
-# MathJax Tests
+# MathJax v3 Tests
 
-This document tests $$\LaTeX$$ rendering using MathJax with
+This document tests $$\mathrm{\LaTeX}$$ rendering using MathJax v3 with
 [just-the-docs](https://github.com/pmarsceill/just-the-docs) as a remote theme.
 
 It was copied from a
@@ -17,10 +17,12 @@ in [markdown-preview-plus](https://atom.io/packages/markdown-preview-plus),
 and adjusted to use
 [kramdown math blocks](https://kramdown.gettalong.org/syntax.html#math-blocks).
 
-
 $$x$$ math at the start of a line
 
-Nested: $$M = \text{while e^2 $e^2$ do $c^2$ end}$$
+Nested:[^bug] $$M = \text{while e\^2 $e^2$ do $c^2$ end}$$
+
+[^bug]:
+    MathJax v3.1.2 issue: `\text{...}` overlaps the math.
 
 **Numbered equations**
 
@@ -39,7 +41,7 @@ Link to equation $$\eqref{eq:test}$$
 > 2.  With a list inside
 > 3.  With $$math$$
 
-**Math environment Syntax testing**
+**Math environment syntax testing**
 
 Inline Math should work with `$$`  $$\frac{x+y}{y}$$
 but not `\(` \(\frac{x+y}{y}\)
@@ -64,7 +66,7 @@ Use `$$` on the same line: $$E=mc^2$$
 
 ----
 
-**Some Tex Functions**
+**Some Tex functions**
 
 $$k \times k$$, $$n \times 2$$, $$2 \times n$$, $$\times$$
 
@@ -83,7 +85,7 @@ $$
 
 ----
 
-**Escaped Math environments**
+**Escaped math environments**
 
 In the following examples no math environments should render:
 
@@ -116,22 +118,22 @@ $x
 
 For all $$x$$ and $$y$$ in $$\mathbb{R}^k$$ it is true that
 $$
-\newcommand{sca}[1]{\langle #1 \rangle}
+\newcommand{\sca}[1]{\langle #1 \rangle}
 |\sca{x,y}|^2 \le \sca{x,x} \cdot \sca{y,y},
 $$
 
-<!-- newcommand not in environment-->
+<!-- newcommand not in environment, gives an error -->
 \newcommand{\scalong}[1]{(#1_1,\dots,#1_k)}
 
 where $$\sca{\cdot,\cdot}$$ denotes the inner product $$\sca{\scalong{x}, \scalong{x}} = \sum_{i=1}^k x_i y_i$$.
 
-<!-- newcommand in environment-->
+<!-- newcommand in environment, no error-->
 $$\newcommand{\scalong}[1]{(#1_1,\dots,#1_k)}$$where $$\sca{\cdot,\cdot}$$ denotes the inner product $$\sca{\scalong{x}, \scalong{x}} = \sum_{i=1}^k x_i y_i$$.
-
 
 ----
 
 **Testing several math fonts**
+
 $$
 p(\mathbf{m}) \sim \mathcal{N}(\mathbf{m}) e^{-\sum_{i} \beta_i m_i}
 $$
@@ -205,7 +207,7 @@ $$ \href{http://www.mathjax.org/}{\mathsf{link}} $$ in math
 
 ~~math $$x^2$$ in strikethrough~~ (doesn't strike through the math)
 
-**In Tables**
+**In tables**
 
 | Left-Aligned  | Center Aligned  | Right Aligned |
 | :------------ |:---------------:| -----:|
@@ -213,23 +215,16 @@ $$ \href{http://www.mathjax.org/}{\mathsf{link}} $$ in math
 | $$a+b$$       | some wordy text | $1600 |
 | $$a+b$$       | some wordy text | $1600 |
 
-The following doesn't work (it only works with Pandoc)
+The following works only when the matrix is all on one line, due to a kramdown limitation:
 
 | Left-Aligned  | Center Aligned  | Right Aligned |
 | :------------ |:---------------:| -----:|
 | $$a+b$$       | some wordy text | $1600 |
-|               | $$
-A=\mathbf{A}=\underline{A}=\begin{pmatrix}
-a_{11} & a_{12} & \cdots & a_{1n}\\
-a_{21} & a_{22} & \cdots & a_{2n}\\
-\vdots & \vdots &        & \vdots\\
-a_{m1} & a_{m2} & \cdots & a_{mn}\\
-\end{pmatrix} = (a_{ij})
-$$                                |   $12 |
+|               | $$A=\mathbf{A}=\underline{A}=\begin{pmatrix}a_{11} & a_{12} & \cdots & a_{1n}\\a_{21} & a_{22} & \cdots & a_{2n}\\\vdots & \vdots &        & \vdots\\a_{m1} & a_{m2} & \cdots & a_{mn}\\\end{pmatrix} = (a_{ij})$$                                |   $12 |
 |               |                 |    $1 |
 
 
-**In Image Captions**
+**In image captions**
 
 The `alt` string doesn't work
 

@@ -41,3 +41,54 @@ blockquote.note {
     margin-bottom: 0;
   }
 }
+
+
+// Correction for the issue illustrated in /docs/css/tasks.md
+
+.main-content {
+  ul {
+    margin-top: 0.5em;
+    padding-left: 1.5em;
+    list-style: none;
+
+    > li {
+      &::before {
+        position: absolute;
+        margin-left: -1.4em;
+        color: $grey-dk-000;
+        content: "•";
+      }
+    }
+  }
+
+  .task-list {
+    padding-left: 1.5em;
+  }
+
+  .task-list-item {
+    display: block;
+    align-items: none;
+
+    &::before {
+      position: relative;
+      content: "";
+    }
+  }
+
+  .task-list-item-checkbox {
+    margin-right: 0.6em;
+  }
+
+}
+
+// Link wrap
+
+.main-content a {
+    white-space: normal;
+}
+
+// KaTeX
+
+h4 .katex {
+  text-transform: none;
+}

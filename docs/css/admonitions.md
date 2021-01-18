@@ -1,6 +1,5 @@
 ---
 title: Admonitions
-parent: Tests
 nav_order: 3
 ---
 # Admonitions

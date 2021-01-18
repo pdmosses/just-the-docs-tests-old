@@ -1,14 +1,19 @@
-{%- comment -%}
-  MathJax: See https://docs.mathjax.org/en/v2.7-latest/start.html
-  
-  For loading and configuration to use version 3, see:
-  https://docs.mathjax.org/en/latest/web/configuration.html
-{%- endcomment -%}
+---
+title: KaTeX Configuration
+parent: KaTeX
+grand_parent: Math
+nav_order: 1
+---
+# KaTeX Configuration
 
+In `_includes/head_custom.yml` add, for example:
+
+{% raw %}
+```html
 {% case page.math %}
-
+     
   {% when "katex" %}
-  
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 
     <!-- The loading of KaTeX is deferred to speed up page rendering -->
@@ -24,43 +29,18 @@
           globalGroup: true,
           trust: true
         });"></script>
-     
-  {% when "mathjax2" %}
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        TeX: { 
-          equationNumbers: { autoNumber: "AMS" }
-        }
-      });
-    </script>
-    <script type="text/javascript" async 
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_SVG">
-    </script>
-  
-  {% when "mathjax3" %}
-    
-    <script>
-      MathJax = { 
-        tex: { 
-          tags: 'ams',
-          packages: {'[+]': ['textmacros']},
-        },
-        loader: {
-          load: ['[tex]/textmacros']
-        },
-        svg: { 
-          fontCache: 'global'
-        }
-      };
-    </script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-
+   
 {% endcase %}
+```
+{% endraw %}
 
-{%- comment -%}
-  Favicon: See https://stackoverflow.com/questions/1321878/how-to-prevent-favicon-ico-requests
-{%- endcomment -%}
+See also [further KaTeX configuration options](https://katex.org/docs/options.html).
 
-<link rel="icon" href="data:,">
+In the front matter of pages using KaTeX (or as a global front-matter default) add:
+
+```yaml
+math: katex
+```
+
+(The suggested field name `math` and the key `katex` can be replaced.)
+  
