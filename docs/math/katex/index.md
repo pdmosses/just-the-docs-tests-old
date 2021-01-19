@@ -29,6 +29,12 @@ $$
 \end{aligned}
 $$
 
-To see the $$\LaTeX$$ source of the formula, select the formula and copy it to the clipboard.
+To see the $$\LaTeX$$ source of the formula, select the formula[^Safari] and copy it to the clipboard.
 
 Some [tests](tests) illustrate the use of math in Markdown.
+
+----
+
+[^Safari]:
+    When using Safari, the selection highlighting may include some of the surrounding text,
+    but only the formula itself is copied to the clipboard.

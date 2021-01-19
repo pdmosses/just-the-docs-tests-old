@@ -19,7 +19,7 @@ and adjusted to use
 
 $$x$$ math at the start of a line
 
-Nested: $$M = \text{while e\^2 $e^2$ do $c^2$ end}$$
+Nested: $$M = \text{while $e^2$ do $c^2$ end}$$
 
 **Numbered equations**
 

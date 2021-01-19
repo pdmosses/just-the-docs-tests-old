@@ -19,18 +19,20 @@ and adjusted to use
 
 $$x$$ math at the start of a line
 
-Nested: $$M = \text{while e\^2 $e^2$ do $c^2$ end}$$
+Nested: $$M = \text{while $e^2$ do $c^2$ end}$$
 
 **Numbered equations**
 
-Automatic equation numbering is not supported by KaTeX:
+Automatic equation numbering is not supported by KaTeX.
+Using manual tags and HTML links:
 
 $$
 \int_0^x \sin(x) dx
-\label{eq:test}
+\htmlId{eq:test}{\tag{1}}
 $$
 
-Link to equation $$\eqref{eq:test}$$
+Link to equation $$\href{#eq:test}{(1)}$$
+
 
 **Blockquotes**
 
