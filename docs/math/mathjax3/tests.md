@@ -22,7 +22,7 @@ $$x$$ math at the start of a line
 Nested:[^bug] $$M = \text{while e\^2 $e^2$ do $c^2$ end}$$
 
 [^bug]:
-    MathJax v3.1.2 issue: `\text{...}` overlaps the math.
+    MathJax v3.1.2 issue with SVG output: `\text{...}` overlaps math.
 
 **Numbered equations**
 
