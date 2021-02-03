@@ -31,7 +31,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 # theme: minima
-remote_theme: pmarsceill/just-the-docs
+remote_theme: pmarsceill/just-the-docs@v0.3.3
 plugins:
   - jekyll-feed
   - jekyll-remote-theme
@@ -76,3 +76,5 @@ aux_links:
 
 # Uncomment to test fixes for visited code links:
 # color_scheme: fix-visited
+
+exclude: [docs/math/katex/issues.md]
