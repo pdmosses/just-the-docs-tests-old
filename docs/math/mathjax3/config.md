@@ -6,7 +6,7 @@ nav_order: 1
 ---
 # MathJax v3 Configuration
 
-In `_includes/head_custom.yml` add, for example:
+In `_includes/head_custom.html` add, for example:
 
 {% raw %}
 ```html
