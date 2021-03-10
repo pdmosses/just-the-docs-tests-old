@@ -43,8 +43,10 @@ Automatic equation numbering is not supported by KaTeX.
 Using manual tags and HTML links:
 
 $$
+\begin{equation}
 \int_0^x \sin(x) dx
 \htmlId{eq:test}{\tag{1}}
+\end{equation}
 $$
 
 Link to equation $$\href{#eq:test}{(1)}$$
