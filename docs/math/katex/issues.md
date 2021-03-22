@@ -81,9 +81,9 @@ Potential workaround:
 
 ```html
 <style>
-	.katex .vlist-r {
-		display: table-cell;
-	}
+  .katex .vlist-r {
+    display: table-cell;
+  }
 </style>
 ```
 
@@ -91,24 +91,24 @@ Using the above style, all the links in the following examples become active.
 
 $$
   \frac
-	{\url{https://katex.org/} \text{ is active}}
-	{\url{https://katex.org/} \text{ is inactive}}
+  {\url{https://katex.org/} \text{ is active}}
+  {\url{https://katex.org/} \text{ is inactive}}
 $$
 
 $$
   \begin{array}{c}
-	  \url{https://katex.org/} \text{ is active} \\
-		\url{https://katex.org/} \text{ is active} \\
-		\url{https://katex.org/} \text{ is inactive}
-	\end{array}
+    \url{https://katex.org/} \text{ is active} \\
+    \url{https://katex.org/} \text{ is active} \\
+    \url{https://katex.org/} \text{ is inactive}
+  \end{array}
 $$
 
 $$
   \begin{aligned}
-	  \url{https://katex.org/} \text{ is active} \\
-		\url{https://katex.org/} \text{ is active} \\
-		\url{https://katex.org/} \text{ is inactive}
-	\end{aligned}
+    \url{https://katex.org/} \text{ is active} \\
+    \url{https://katex.org/} \text{ is active} \\
+    \url{https://katex.org/} \text{ is inactive}
+  \end{aligned}
 $$
 
 
