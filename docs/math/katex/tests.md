@@ -39,7 +39,15 @@ Nested: $$M = \text{while $e^2$ do $c^2$ end}$$
 
 **Numbered equations**
 
-Automatic equation numbering is not supported by KaTeX.
+Automatic equation numbering is supported by KaTeX.
+
+$$
+\begin{equation}
+\int_0^x \sin(x) dx
+\end{equation}
+$$
+
+`\label` and `\eqref` are not yet implemented.
 Using manual tags and HTML links:
 
 $$
