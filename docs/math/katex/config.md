@@ -30,15 +30,6 @@ In `_includes/head_custom.html` add (for version 0.13.0):
     }
   </style>
 
-  <!-- Workaround for KaTeX 0.13.0 bug https://github.com/KaTeX/KaTeX/issues/2815
-  Unsatisfactory - can upset vertical alignment
-  <style>
-    .katex .vlist-r {
-      display: table-cell;
-    }
-  </style>
-  -->
-
   <!-- To automatically render math in text elements, include the auto-render extension: -->
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js" integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB+w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v" crossorigin="anonymous"
       onload="renderMathInElement(document.body, {

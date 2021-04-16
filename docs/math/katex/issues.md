@@ -77,14 +77,12 @@ $$
 
 [KaTeX issue 2815](https://github.com/KaTeX/KaTeX/issues/2815)
 
-Potential workaround:
+Potential workaround in CSS:
 
-```html
-<style>
-  .katex .vlist-r {
-    display: table-cell;
-  }
-</style>
+```css
+.katex .vlist-t2 > .vlist-r:nth-child(2) > .vlist {
+  pointer-events: none;
+}
 ```
 
 Using the above style, all the links in the following examples become active.
@@ -112,6 +110,45 @@ $$
 $$
 
 
+## Macro definitions fail if parameters are omitted in expansions
+
+Definitions with `\newcommand` work:
+
+```latex
+\newcommand{\FirstCommand}[2]{#1}
+\newcommand{\SecondCommand}[2]{#2}
+\FirstCommand{A}{B}, \SecondCommand{C}{D}
+```
+
+produces:
+
+$$
+\newcommand{\FirstCommand}[2]{#1}
+\newcommand{\SecondCommand}[2]{#2}
+\FirstCommand{A}{B}, \SecondCommand{C}{D}
+$$
+
+The corresponding definitions as macros do not work:
+
+```html
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
+    onload="renderMathInElement(document.body, {
+      globalGroup: true,
+      trust: true,
+      macros: {
+        '\\FirstMacro': '#1',
+        '\\SecondMacro': '#2'
+      }
+    });"></script>
+```
+
+The JavaScript console shows:
+```
+TypeError: undefined is not an object (evaluating 't.text')
+```
+
+`\FirstMacro{A}{B}, \SecondMacro{C}{D}` produces
+$$\First{A}{B}$$, $$\Second{C}{D}$$
 
 
 
