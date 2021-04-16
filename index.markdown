@@ -48,7 +48,7 @@ The following sections are a log of the creation of this website, with links to 
     - Publish repository `just-the-docs-tests`
 
 6.  Browser: GitHub repository: Settings:
-    - GitHub Pages: Source: `master` (Save)
+    - GitHub Pages: Source: `master` or `main` (Save)
     - Change repository visibility: `public`
 
 7. Browser: <https://pdmosses.github.io/just-the-docs-tests/>
@@ -131,6 +131,9 @@ The following sections are a log of the creation of this website, with links to 
 
 [Jekyll Actions], [Jekyll Actions Demo], [Deploy your Jekyll blog using Github Pages and Github Actions]
 
+Updated April 2021
+{: .label .label-green }
+
 The `Gemfile` is used by the action, so make sure it is **not** in `.gitignore`
 (in contrast to `Gemfile.lock`, which should be ignored by git).
 
@@ -145,45 +148,41 @@ The `Gemfile` is used by the action, so make sure it is **not** in `.gitignore`
       name: Build and deploy Jekyll site to GitHub Pages
 
       on:
-        push:
-          branches:
-            - master
+        push
 
       jobs:
         github-pages:
-          runs-on: ubuntu-16.04
+          runs-on: ubuntu-latest
           steps:
-            - uses: actions/checkout@v2
-            - uses: helaili/jekyll-action@2.0.3
-              env:
-                JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
+          - uses: actions/checkout@v2
+
+          # Use GitHub Actions' cache to shorten build times and decrease load on servers
+          - uses: actions/cache@v2
+            with:
+              path: vendor/bundle
+              key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+              restore-keys: |
+                ${{ runner.os }}-gems-
+
+          # Standard usage
+          - uses:  helaili/jekyll-action@v2
+            with:
+              token: ${{ secrets.GITHUB_TOKEN }}
       ```
       {% endraw %}
-    - Optional: replace `ubuntu-16.04` by `ubuntu-latest`
-    - Optional: replace `helaili/jekyll-action@2.0.3` by `helaili/jekyll-action`
     - Click `Start commit` then `Commit new file`
 
-2.  Browser: [GitHub profile]\: Developer Settings: [Personal Access Tokens]
-    - Click `Generate new token`
-    - Note: `GitHub Actions`
-    - Select scopes: `repo`
-    - Click `Generate new token`
-    - Copy the displayed token
+2.  Browser: GitHub repository: Settings: Pages:
+    - GitHub Pages: Source: should still be set to `master` or `main`
 
-3.  Browser: GitHub repository: Settings: Secrets:
-    - Click `New secret`
-    - Name: `JEKYLL_PAT`
-    - Value: Paste the token
-    - Click `Add secret`
-
-4. Browser: GitHub repository:
+3. Browser: GitHub repository:
     - Click on the status symbol (tick or X) in the latest commit information
     - Click on `Details`
     - A successful build: ![screenshot](assets/images/workflow-details.png)
+    - The site has now been built using **Jekyll 4**, as specified in `Gemfile`
 
-5.  Browser: <https://pdmosses.github.io/just-the-docs-tests/>
-    - The site appears on GitHub Pages
-    - The site is now built using **Jekyll 4**, as specified in `Gemfile`
+4.  Browser: <https://pdmosses.github.io/just-the-docs-tests/>
+    - Check the site has been published on GitHub Pages
 
 
 [Just the Docs Quickstart]: https://pmarsceill.github.io/just-the-docs/#quick-start-use-as-a-github-pages-remote-theme
