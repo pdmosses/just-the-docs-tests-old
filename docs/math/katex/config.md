@@ -6,36 +6,44 @@ nav_order: 1
 ---
 # KaTeX Configuration
 
-In `_includes/head_custom.html` add (for version 0.13.0):
+In `_includes/head_custom.html` add (for version 0.13.3):
 
 {% raw %}
 ```html
 {% case page.math %}
      
-  {% when "katex" %}
+{% when "katex" %}
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR+zwDAROtph0PXGte6ia8heboACF9R5l/DiY+WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.3/dist/katex.min.css" integrity="sha384-ThssJ7YtjywV52Gj4JE/1SQEDoMEckXyhkFVwaf4nDSm5OBlXeedVYjuuUd0Yua+" crossorigin="anonymous">
 
   <!-- The loading of KaTeX is deferred to speed up page rendering -->
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8+w2LAIftJEULZABrF9PPFv+tVkH" crossorigin="anonymous"></script>
-  
-  <!-- Copy-tex extension https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex -->
-  <link href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css">
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/copy-tex.min.js" integrity="sha384-Ep9Es0VCjVn9dFeaN2uQxgGcGmG+pfZ4eBaHxUpxXDORrrVACZVOpywyzvFRGbmv" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.3/dist/katex.min.js" integrity="sha384-Bi8OWqMXO1ta+a4EPkZv7bYGIes7C3krGSZoTGNTAnAn5eYQc7IIXrJ/7ck1drAi" crossorigin="anonymous"></script>
 
-  <!-- Override the KaTeX 0.13.0 default of font-size: 1.21em -->
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.3/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
+  onload="renderMathInElement(document.body, {
+    globalGroup: true,
+    trust: true,
+    strict: false,
+    throwOnError: false,
+    macros: {
+      '\\\n': '\\ '
+    }
+  });"></script>
+
+  <!-- Override the KaTeX default of font-size: 1.21em -->
   <style>
     .katex { 
       font-size: 1em; 
     }
   </style>
 
-  <!-- To automatically render math in text elements, include the auto-render extension: -->
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js" integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB+w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v" crossorigin="anonymous"
-      onload="renderMathInElement(document.body, {
-        globalGroup: true,
-        trust: true
-      });"></script>
+  <!-- Potential workaround for KaTeX 0.13 bug https://github.com/KaTeX/KaTeX/issues/2815 -->
+  <style>
+    .katex .vlist-t2 > .vlist-r:nth-child(2) > .vlist {
+      pointer-events: none;
+  }
+  </style>
    
 {% endcase %}
 ```
@@ -50,4 +58,11 @@ math: katex
 ```
 
 (The suggested field name `math` and the key `katex` can be replaced.)
+
+## Preamble
+
+To implement a preamble that defines additional commands for use on all KaTeX pages:
+
+- define a custom layout that includes the command definitions
+- use it on KaTeX pages instead of the default layout.
   
