@@ -1,0 +1,272 @@
+{"0": {
+    "doc": "A",
+    "title": "A",
+    "content": "title: A has_children: true . ",
+    "url": "/just-the-docs-tests/docs/grandchildren/A.html",
+    "relUrl": "/docs/grandchildren/A.html"
+  },"1": {
+    "doc": "C",
+    "title": "C",
+    "content": "title: C parent: A has_children: true . ",
+    "url": "/just-the-docs-tests/docs/grandchildren/AC.html",
+    "relUrl": "/docs/grandchildren/AC.html"
+  },"2": {
+    "doc": "B",
+    "title": "B",
+    "content": "title: B has_children: true . ",
+    "url": "/just-the-docs-tests/docs/grandchildren/B.html",
+    "relUrl": "/docs/grandchildren/B.html"
+  },"3": {
+    "doc": "C",
+    "title": "C",
+    "content": "title: C parent: B has_children: true . ",
+    "url": "/just-the-docs-tests/docs/grandchildren/BC.html",
+    "relUrl": "/docs/grandchildren/BC.html"
+  },"4": {
+    "doc": "D",
+    "title": "D",
+    "content": "title: D parent: C grand_parent: A . ",
+    "url": "/just-the-docs-tests/docs/grandchildren/D.html",
+    "relUrl": "/docs/grandchildren/D.html"
+  },"5": {
+    "doc": "E",
+    "title": "E",
+    "content": "title: E parent: C grand_parent: A . ",
+    "url": "/just-the-docs-tests/docs/grandchildren/E.html",
+    "relUrl": "/docs/grandchildren/E.html"
+  },"6": {
+    "doc": "F",
+    "title": "F",
+    "content": "title: F parent: C grand_parent: B . ",
+    "url": "/just-the-docs-tests/docs/grandchildren/F.html",
+    "relUrl": "/docs/grandchildren/F.html"
+  },"7": {
+    "doc": "Admonitions",
+    "title": "Admonitions",
+    "content": "Support for common markdown callouts like NOTE, TIP, HINT has been requested as an enhancement for Just the Docs. Various other platforms for documentation websites support admonitions, alerts, or callouts. Some examples: . | Python-Markdown !!! type \"optional explicit title within double quotes\" Any number of other indented markdown elements. This is the second paragraph. | Pandoc ::: Warning :::::: This is a warning. ::: Danger This is a warning within a warning. ::: :::::::::::::::::: . | reStructuredText . | attention, caution, danger, error, hint, important, note, tip, warning, admonition | . | Jekyll Doc . | Alerts: note, tip, warning, important . {% include note.html content=\"This is my note. All the content I type here is treated as a single paragraph. &lt;br/&gt;&lt;br/&gt; Now I'm typing on a new line.\" %} . | Callouts: danger, default, primary, success, info, warning . {% include callout.html content=\"This is my callout. It has a border on the left whose color you define by passing a type parameter. I typically use this style of callout when I have more information that I want to share, often spanning multiple paragraphs. \" type=\"primary\" %} . | . | Bootstrap . | primary, secondary, success, danger, warning, info, light, dark | . | . A kramdown extension for admonition blocks has been proposed, but needs a PR. ",
+    "url": "/just-the-docs-tests/docs/css/admonitions.html",
+    "relUrl": "/docs/css/admonitions.html"
+  },"8": {
+    "doc": "Admonitions",
+    "title": "Using IALs in kramdown with custom styles",
+    "content": "See https://github.com/pdmosses/just-the-docs/blob/callouts/docs/configuration.md#callouts for how to configure various callouts when using the feature branch for PR #466 as a remote theme. (This test site uses custom CSS where the callouts are not configurable.) . Do not blah blah blah… . Do not blah blah blah… . Do not blah blah blah… . The markup is neat enough for a single paragraph: . {: .note } Do not blah blah blah... But that doesn’t work for multiple paragraphs. Fortunately, block quotes allow multiple paragraphs (etc.): . {: .note } &gt; Do not blah blah blah... &gt; &gt; Do not blah blah blah... Then we get: . Do not blah blah blah… . Do not blah blah blah… . It seems unlikely that a block quote would otherwise be wanted as the body of an admonition, so perhaps that is the simplest markup style for use in kramdown? . ",
+    "url": "/just-the-docs-tests/docs/css/admonitions.html#using-ials-in-kramdown-with-custom-styles",
+    "relUrl": "/docs/css/admonitions.html#using-ials-in-kramdown-with-custom-styles"
+  },"9": {
+    "doc": "KaTeX Configuration",
+    "title": "KaTeX Configuration",
+    "content": "In _includes/head_custom.html add (for version 0.13.3): . {% case page.math %} {% when \"katex\" %} &lt;link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/katex@0.13/dist/katex.min.css\" crossorigin=\"anonymous\"&gt; &lt;!-- The loading of KaTeX is deferred to speed up page rendering --&gt; &lt;script defer src=\"https://cdn.jsdelivr.net/npm/katex@0.13/dist/katex.min.js\" crossorigin=\"anonymous\"&gt;&lt;/script&gt; &lt;!-- To automatically render math in text elements, include the auto-render extension: --&gt; &lt;script defer src=\"https://cdn.jsdelivr.net/npm/katex@0.13/dist/contrib/auto-render.min.js\" crossorigin=\"anonymous\" onload=\"renderMathInElement(document.body, { globalGroup: true, trust: true, strict: false, throwOnError: false, macros: { '\\\\\\n': '\\\\ ' } });\"&gt;&lt;/script&gt; &lt;!-- Override the KaTeX default of font-size: 1.21em --&gt; &lt;style&gt; .katex { font-size: 1em; } &lt;/style&gt; &lt;!-- Potential workaround for KaTeX 0.13 bug https://github.com/KaTeX/KaTeX/issues/2815 --&gt; &lt;style&gt; .katex .vlist-t2 &gt; .vlist-r:nth-child(2) &gt; .vlist { pointer-events: none; } &lt;/style&gt; {% endcase %} . See also further KaTeX configuration options. In the front matter of pages using KaTeX (or as a global front-matter default) add: . math: katex . (The suggested field name math and the key katex can be replaced.) . ",
+    "url": "/just-the-docs-tests/docs/math/katex/config.html",
+    "relUrl": "/docs/math/katex/config.html"
+  },"10": {
+    "doc": "KaTeX Configuration",
+    "title": "Preamble",
+    "content": "To implement a preamble that defines additional commands for use on all KaTeX pages: . | define a custom layout that includes the command definitions | use it on KaTeX pages instead of the default layout. | . ",
+    "url": "/just-the-docs-tests/docs/math/katex/config.html#preamble",
+    "relUrl": "/docs/math/katex/config.html#preamble"
+  },"11": {
+    "doc": "MathJax v2 Configuration",
+    "title": "MathJax v2 Configuration",
+    "content": "In _includes/head_custom.html add, for example: . {% case page.math %} {% when \"mathjax2\" %} &lt;script type=\"text/x-mathjax-config\"&gt; MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: \"AMS\" } } }); &lt;/script&gt; &lt;script type=\"text/javascript\" async src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_SVG\"&gt; &lt;/script&gt; {% endcase %} . See also further MathJax v2 configuration options. In the front matter of pages using MathJax v2 (or as a global front-matter default) add: . math: mathjax2 . The suggested field name math and the key mathjax2 can be replaced. ",
+    "url": "/just-the-docs-tests/docs/math/mathjax2/config.html",
+    "relUrl": "/docs/math/mathjax2/config.html"
+  },"12": {
+    "doc": "MathJax v3 Configuration",
+    "title": "MathJax v3 Configuration",
+    "content": "In _includes/head_custom.html add, for example: . {% case page.math %} {% when \"mathjax3\" %} &lt;script&gt; MathJax = { tex: { tags: 'ams', packages: {'[+]': ['textmacros']}, }, loader: { load: ['[tex]/textmacros'] } }; &lt;/script&gt; &lt;script src=\"https://polyfill.io/v3/polyfill.min.js?features=es6\"&gt;&lt;/script&gt; &lt;script type=\"text/javascript\" id=\"MathJax-script\" async src=\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js\"&gt; &lt;/script&gt; {% endcase %} . See also further MathJax v3 configuration options. In the front matter of pages using MathJax v3 (or as a global front-matter default) add: . math: mathjax3 . (The suggested field name math and the key mathjax3 can be replaced.) . ",
+    "url": "/just-the-docs-tests/docs/math/mathjax3/config.html",
+    "relUrl": "/docs/math/mathjax3/config.html"
+  },"13": {
+    "doc": "Home",
+    "title": "Tests for Just the Docs",
+    "content": "Various tests illustrate how the theme renders various elements. The following sections are a log of the creation of this website, with links to some relevant resources. Bug reports and suggestions for improvement are welcome! . | Create a Jekyll site on GitHub Pages | Use Just the Docs as a remote theme | Use Jekyll Actions on GitHub Pages with Jekyll 4 | . ",
+    "url": "/just-the-docs-tests/#tests-for-just-the-docs",
+    "relUrl": "/#tests-for-just-the-docs"
+  },"14": {
+    "doc": "Home",
+    "title": "Create a Jekyll site on GitHub Pages",
+    "content": ". | Shell: jekyll new just-the-docs-tests ... cd just-the-docs-tests bundle exec jekyll serve . | Browser: http://localhost:4000 . | Shows the site home page with Minima layout | . | GitHub Desktop: . | Create repository just-the-docs-tests | . | Shell: git config user.email ...@users.noreply.github.com . | GitHub Desktop: . | Publish repository just-the-docs-tests | . | Browser: GitHub repository: Settings: . | GitHub Pages: Source: master or main (Save) | Change repository visibility: public | . | Browser: https://pdmosses.github.io/just-the-docs-tests/ . | The site appears on GitHub Pages | . | . ",
+    "url": "/just-the-docs-tests/#create-a-jekyll-site-on-github-pages",
+    "relUrl": "/#create-a-jekyll-site-on-github-pages"
+  },"15": {
+    "doc": "Home",
+    "title": "Use Just the Docs as a remote theme",
+    "content": "Just the Docs Quickstart . | Edit _config.yml: title: Testing Just the Docs # email: your-email@example.com description: &gt;- # this means to ignore newlines until \"baseurl:\" This site tests some features of Just the Docs, a remote theme for Jekyll on GitHub Pages. baseurl: \"/just-the-docs-tests\" # the subpath of your site, e.g. /blog url: \"\" # the base hostname &amp; protocol for your site, e.g. http://example.com . Replace the Minima theme by Just the Docs Jekyll remote theme: . # Build settings # theme: minima remote_theme: pmarsceill/just-the-docs plugins: - jekyll-feed - jekyll-remote-theme . Avoid need for layout: default in docs pages using Jekyll front matter defaults: . defaults: - scope: path: \"docs\" # an empty string here means all files in the project values: layout: \"default\" . Warning: Using path: \"\" above corrupts files in the assets folder (also when restricted to type: \"pages\"). | Edit Gemfile: replace the Minima theme by Just the Docs remote theme # Happy Jekylling! gem \"jekyll\", \"~&gt; 4.1.1\" # This is the default theme for new Jekyll sites. You may change this to anything you like. # gem \"minima\", \"~&gt; 2.5\" gem \"jekyll-remote-theme\" gem \"just-the-docs\" . Warning: The github-pages gem currently requires Jekyll 3, and cannot be installed together with Jekyll 4. | Files: . | delete about.markdown | update index.markdown | add README.md | add docs/index.md | add docs/grandchildren/* | add _includes/head_custom.html to prevent favicon.ico requests &lt;link rel=\"icon\" href=\"data:,\"&gt; . | . | Shell: bundle install bundle exec jekyll serve . | Browser: http://localhost:4000/just-the-docs-tests/ . | Shows the site home page with Just the Docs layout | . | GitHub Desktop: . | Push | . | Browser: https://pdmosses.github.io/just-the-docs-tests/ . | The site appears on GitHub Pages | The site is automatically built using Jekyll 3.8.5 | . | . ",
+    "url": "/just-the-docs-tests/#use-just-the-docs-as-a-remote-theme",
+    "relUrl": "/#use-just-the-docs-as-a-remote-theme"
+  },"16": {
+    "doc": "Home",
+    "title": "Use Jekyll Actions on GitHub Pages with Jekyll 4",
+    "content": "Jekyll Actions, Jekyll Actions Demo, Deploy your Jekyll blog using Github Pages and Github Actions . Updated April 2021 . The Gemfile is used by the action, so make sure it is not in .gitignore (in contrast to Gemfile.lock, which should be ignored by git). N.B. The following steps overwrite the gh-pages branch! . | Browser: GitHub repository: Actions: . | Click on the link to set up a workflow yourself | Change the file name from main.yml to github-pages.yml | Replace the file contents by the following YAML code from Jekyll Actions . name: Build and deploy Jekyll site to GitHub Pages on: push jobs: github-pages: runs-on: ubuntu-latest steps: - uses: actions/checkout@v2 # Use GitHub Actions' cache to shorten build times and decrease load on servers - uses: actions/cache@v2 with: path: vendor/bundle key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }} restore-keys: | ${{ runner.os }}-gems- # Standard usage - uses: helaili/jekyll-action@v2 with: token: ${{ secrets.GITHUB_TOKEN }} . | Click Start commit then Commit new file | . | Browser: GitHub repository: Settings: Pages: . | GitHub Pages: Source: should still be set to master or main | . | Browser: GitHub repository: . | Click on the status symbol (tick or X) in the latest commit information | Click on Details | A successful build: | The site has now been built using Jekyll 4, as specified in Gemfile | . | Browser: https://pdmosses.github.io/just-the-docs-tests/ . | Check the site has been published on GitHub Pages | . | . ",
+    "url": "/just-the-docs-tests/#use-jekyll-actions-on-github-pages-with-jekyll-4",
+    "relUrl": "/#use-jekyll-actions-on-github-pages-with-jekyll-4"
+  },"17": {
+    "doc": "Home",
+    "title": "Home",
+    "content": " ",
+    "url": "/just-the-docs-tests/",
+    "relUrl": "/"
+  },"18": {
+    "doc": "Grandchildren",
+    "title": "Grandchildren",
+    "content": "The children of two pages with the same title (C, C) distinguish between their potential parents by specifying their grandparents. The resulting navigation hierarchy has the following structure: . A . | C . | D | E | . | . B . | C . | F | . | . ",
+    "url": "/just-the-docs-tests/docs/grandchildren/",
+    "relUrl": "/docs/grandchildren/"
+  },"19": {
+    "doc": "MathJax v3",
+    "title": "MathJax v3",
+    "content": "Just the Docs sites can be customised to support MathJax, as explained in the configuration suggestions. Pages with math: mathjax3 in the front matter then render \\(\\mathrm{\\LaTeX}\\) code in kramdown math blocks using MathJax v3. For example: . \\[\\begin{aligned} &amp; \\phi(x,y) = \\phi \\left(\\sum_{i=1}^n x_ie_i, \\sum_{j=1}^n y_je_j \\right) = \\sum_{i=1}^n \\sum_{j=1}^n x_i y_j \\phi(e_i, e_j) = \\\\ &amp; (x_1, \\ldots, x_n) \\left( \\begin{array}{ccc} \\phi(e_1, e_1) &amp; \\cdots &amp; \\phi(e_1, e_n) \\\\ \\vdots &amp; \\ddots &amp; \\vdots \\\\ \\phi(e_n, e_1) &amp; \\cdots &amp; \\phi(e_n, e_n) \\end{array} \\right) \\left( \\begin{array}{c} y_1 \\\\ \\vdots \\\\ y_n \\end{array} \\right) \\end{aligned}\\] To see the \\(\\mathrm{\\LaTeX}\\) source of the formula, right-click anywhere on it. Some tests illustrate the use of math in Markdown. ",
+    "url": "/just-the-docs-tests/docs/math/mathjax3/",
+    "relUrl": "/docs/math/mathjax3/"
+  },"20": {
+    "doc": "MathJax v2",
+    "title": "MathJax v2",
+    "content": "Just the Docs sites can be customised to support MathJax, as explained in the configuration suggestions. Pages with math: mathjax2 in the front matter then render \\(\\mathrm{\\LaTeX}\\) code in kramdown math blocks using MathJax v2. For example: . \\[\\begin{aligned} &amp; \\phi(x,y) = \\phi \\left(\\sum_{i=1}^n x_ie_i, \\sum_{j=1}^n y_je_j \\right) = \\sum_{i=1}^n \\sum_{j=1}^n x_i y_j \\phi(e_i, e_j) = \\\\ &amp; (x_1, \\ldots, x_n) \\left( \\begin{array}{ccc} \\phi(e_1, e_1) &amp; \\cdots &amp; \\phi(e_1, e_n) \\\\ \\vdots &amp; \\ddots &amp; \\vdots \\\\ \\phi(e_n, e_1) &amp; \\cdots &amp; \\phi(e_n, e_n) \\end{array} \\right) \\left( \\begin{array}{c} y_1 \\\\ \\vdots \\\\ y_n \\end{array} \\right) \\end{aligned}\\] To see the \\(\\mathrm{\\LaTeX}\\) source of the formula, right-click anywhere on it. Some tests illustrate the use of math in Markdown. ",
+    "url": "/just-the-docs-tests/docs/math/mathjax2/",
+    "relUrl": "/docs/math/mathjax2/"
+  },"21": {
+    "doc": "KaTeX",
+    "title": "\\(\\KaTeX\\)",
+    "content": "Just the Docs sites can be customised to support \\(\\KaTeX\\), as explained in the configuration suggestions. Pages with math: katex in the front matter then render \\(\\LaTeX\\) code in kramdown math blocks using \\(\\KaTeX\\). For example: . \\[\\begin{aligned} &amp; \\phi(x,y) = \\phi \\left(\\sum_{i=1}^n x_ie_i, \\sum_{j=1}^n y_je_j \\right) = \\sum_{i=1}^n \\sum_{j=1}^n x_i y_j \\phi(e_i, e_j) = \\\\ &amp; (x_1, \\ldots, x_n) \\left( \\begin{array}{ccc} \\phi(e_1, e_1) &amp; \\cdots &amp; \\phi(e_1, e_n) \\\\ \\vdots &amp; \\ddots &amp; \\vdots \\\\ \\phi(e_n, e_1) &amp; \\cdots &amp; \\phi(e_n, e_n) \\end{array} \\right) \\left( \\begin{array}{c} y_1 \\\\ \\vdots \\\\ y_n \\end{array} \\right) \\end{aligned}\\] To see the \\(\\LaTeX\\) source of the formula, select the formula1 and copy it to the clipboard. Some tests illustrate the use of math in Markdown. | When using Safari, the selection highlighting may include some of the surrounding text, but only the formula itself is copied to the clipboard. &#8617; . | . ",
+    "url": "/just-the-docs-tests/docs/math/katex/#katex",
+    "relUrl": "/docs/math/katex/#katex"
+  },"22": {
+    "doc": "KaTeX",
+    "title": "KaTeX",
+    "content": " ",
+    "url": "/just-the-docs-tests/docs/math/katex/",
+    "relUrl": "/docs/math/katex/"
+  },"23": {
+    "doc": "Math",
+    "title": "Math",
+    "content": "The following pages demonstrate how users can customise the current version of Just the Docs to support automatic rendering of math formulae in Markdown. Different pages on the same site can use different rendering packages: the value of the math field in the front matter of a page determines which package to use for it. The rendering of LaTeX math markup on web pages by the different packages is generally very close to the rendering of the same markup in PDFs by latex engines. However, compatibility between LaTeX markup for math on web pages and PDFs is currently limited by lack of support for various commands and environments. ",
+    "url": "/just-the-docs-tests/docs/math/",
+    "relUrl": "/docs/math/"
+  },"24": {
+    "doc": "List Labels",
+    "title": "List Labels",
+    "content": ". | Ordered List 1 . | Unordered List 1 . | Ordered List 2 . | Unordered List 2 . | Unordered List 3 | . | . | . | . | . | Ordered List 1 . | Ordered List 2 - Item 1 . | Unordered List 1 - Item 1 | Unordered List 1 - Item 2 | . | Ordered List 2 - Item 2 | . | . ",
+    "url": "/just-the-docs-tests/docs/css/list-labels.html",
+    "relUrl": "/docs/css/list-labels.html"
+  },"25": {
+    "doc": "Lists",
+    "title": "Lists",
+    "content": "The following sections contain lists where the first child of each item is a block-level element, using blank lines following Kramdown syntax. For some combinations (especially those involving description list elements) vertical alignment in the rendered web pages is not ideal in v0.3.1. The following setting in _config.yml loads the custom CSS in fix-lists.scss, which fixes most of the alignment issues: . color_scheme: fix-lists . as shown in this PDF. ",
+    "url": "/just-the-docs-tests/docs/css/lists.html",
+    "relUrl": "/docs/css/lists.html"
+  },"26": {
+    "doc": "Lists",
+    "title": "Unordered lists",
+    "content": ". | paragraph text . paragraph text . | Header . paragraph text . | block quote . paragraph text . | fenced code block . paragraph text . | . | unordered list item | unordered list item | . paragraph text . | . | ordered list item | ordered list item | . paragraph text . | term description term description paragraph text . | | Default aligned | Left aligned | Center aligned | Right aligned | . | First body part | Second cell | Third cell | fourth cell | . | Second line | foo | strong | baz | . | Third line | quux | baz | bar | . | Second body |   |   |   | . | 2 line |   |   |   | . | Footer row |   |   |   | . paragraph text . | . paragraph text . | \\[\\mathit{math} \\{ \\mathit{block} \\}\\] paragraph text . | . ",
+    "url": "/just-the-docs-tests/docs/css/lists.html#unordered-lists",
+    "relUrl": "/docs/css/lists.html#unordered-lists"
+  },"27": {
+    "doc": "Lists",
+    "title": "Ordered lists",
+    "content": ". | paragraph text . paragraph text . | Header . paragraph text . | block quote . paragraph text . | fenced code block . paragraph text . | . | unordered list item | unordered list item | . paragraph text . | . | ordered list item | ordered list item | . paragraph text . | term description term description paragraph text . | | Default aligned | Left aligned | Center aligned | Right aligned | . | First body part | Second cell | Third cell | fourth cell | . | Second line | foo | strong | baz | . | Third line | quux | baz | bar | . | Second body |   |   |   | . | 2 line |   |   |   | . | Footer row |   |   |   | . paragraph text . | . paragraph text . | \\[\\mathit{math} \\{ \\mathit{block} \\}\\] paragraph text . | . ",
+    "url": "/just-the-docs-tests/docs/css/lists.html#ordered-lists",
+    "relUrl": "/docs/css/lists.html#ordered-lists"
+  },"28": {
+    "doc": "Lists",
+    "title": "Description lists",
+    "content": "term paragraph text . paragraph text . term Header . paragraph text . term block quote . paragraph text . term fenced code block . paragraph text . term . | unordered list item | unordered list item | . paragraph text . term . | ordered list item | ordered list item | . paragraph text . term sub-term sub-description sub-term sub-description paragraph text . term | Default aligned | Left aligned | Center aligned | Right aligned | . | First body part | Second cell | Third cell | fourth cell | . | Second line | foo | strong | baz | . | Third line | quux | baz | bar | . | Second body |   |   |   | . | 2 line |   |   |   | . | Footer row |   |   |   | . paragraph text . term . paragraph text . term \\[\\mathit{math} \\{ \\mathit{block} \\}\\] paragraph text . ",
+    "url": "/just-the-docs-tests/docs/css/lists.html#description-lists",
+    "relUrl": "/docs/css/lists.html#description-lists"
+  },"29": {
+    "doc": "Obsolete Tests",
+    "title": "Obsolete Tests",
+    "content": "The following tests illustrated issues with previous versions of Just the Docs, addressed in the current version. ",
+    "url": "/just-the-docs-tests/docs/obsolete.html",
+    "relUrl": "/docs/obsolete.html"
+  },"30": {
+    "doc": "Task lists",
+    "title": "Task lists",
+    "content": "Issue #517 . ",
+    "url": "/just-the-docs-tests/docs/css/tasks.html",
+    "relUrl": "/docs/css/tasks.html"
+  },"31": {
+    "doc": "Task lists",
+    "title": "checks in sub-list",
+    "content": ". | aaaa aaa aaa aaaaaaa aaaa . | bbbb bbbb bbbb bbbbb b bb | c | . | ddd d dddd d dd | e | . ",
+    "url": "/just-the-docs-tests/docs/css/tasks.html#checks-in-sub-list",
+    "relUrl": "/docs/css/tasks.html#checks-in-sub-list"
+  },"32": {
+    "doc": "Task lists",
+    "title": "mixed",
+    "content": ". | aaaaaa aaaaa aaaaaa aaaaa . | bbbb bbbb bbbb bbbbb b bb | c | . | ddd d dddd d dd | e | . ",
+    "url": "/just-the-docs-tests/docs/css/tasks.html#mixed",
+    "relUrl": "/docs/css/tasks.html#mixed"
+  },"33": {
+    "doc": "MathJax v3 Tests",
+    "title": "MathJax v3 Tests",
+    "content": "This page tests \\(\\mathrm{\\LaTeX}\\) rendering using MathJax v3 with just-the-docs as a remote theme. It was copied from a test in markdown-preview-plus, and adjusted to use kramdown math blocks. Preview dark color scheme . \\(x\\) math at the start of a line . Nested:1 \\(M = \\text{while $e^2$ do $c^2$ end}\\) . Numbered equations . \\[\\begin{equation} \\int_0^x \\sin(x) dx \\label{eq:test} \\end{equation}\\] Link to equation \\(\\eqref{eq:test}\\) . Blockquotes . | A block quote | With a list inside | With \\(math\\) | . Math environment syntax testing . Inline Math should work with $$ \\(\\frac{x+y}{y}\\) but not \\( (\\frac{x+y}{y}) . Use $$ on separate lines: . \\[\\int_{-\\infty}^\\infty e^{-x^2} = \\sqrt{\\pi}\\] Use $$ on the same line: \\(\\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}\\) . Use $$ on separate lines: . \\[a+b\\] Use $$ on the same line: \\(E=mc^2\\) . Some Tex functions . \\(k \\times k\\), \\(n \\times 2\\), \\(2 \\times n\\), \\(\\times\\) . \\(x \\cdot y\\), \\(\\cdot\\) . \\[\\sqrt{x^2+y^2+z^2}\\] \\[\\alpha \\beta \\gamma\\] \\[\\begin{aligned} x\\ &amp;= y\\\\ mc^2\\ &amp;= E \\end{aligned}\\] . Escaped math environments . In the following examples no math environments should render: . a $5, a $10 and a $100 Bill. All McScrooge sees . $$ . and even more: . $$ . \\[x+y] \\(x+y) . $x . \\$ . \\$, \\[ \\], $x$ . Testing \\newcommand . For all \\(x\\) and \\(y\\) in \\(\\mathbb{R}^k\\) it is true that \\(\\newcommand{\\sca}[1]{\\langle #1 \\rangle} |\\sca{x,y}|^2 \\le \\sca{x,x} \\cdot \\sca{y,y},\\) . \\newcommand{\\scalong}[1]{(#1_1,\\dots,#1_k)} . where \\(\\sca{\\cdot,\\cdot}\\) denotes the inner product \\(\\sca{\\scalong{x}, \\scalong{x}} = \\sum_{i=1}^k x_i y_i\\). \\(\\newcommand{\\scalong}[1]{(#1_1,\\dots,#1_k)}\\)where \\(\\sca{\\cdot,\\cdot}\\) denotes the inner product \\(\\sca{\\scalong{x}, \\scalong{x}} = \\sum_{i=1}^k x_i y_i\\). Testing several math fonts . \\[p(\\mathbf{m}) \\sim \\mathcal{N}(\\mathbf{m}) e^{-\\sum_{i} \\beta_i m_i}\\] \\[\\langle \\vec{m} \\rangle = \\frac{1}{Z(\\vec{\\beta})}\\vec{m}(\\mu) \\sum_{\\mu\\in\\mathcal{G}} e^{-\\vec{\\beta}\\cdot\\vec{m}(\\mu)}\\] . Notice below that the $$-separated display math doesn’t have a blank line before and after (i.e. in an actual \\(\\LaTeX\\) document it wouldn’t be placed in a separate paragraph): . The characteristic polynomial \\(\\chi(\\lambda)\\) of the \\(3 \\times 3\\) matrix     \\(\\left( \\begin{array}{ccc} a &amp; b &amp; c \\\\ d &amp; e &amp; f \\\\ g &amp; h &amp; i \\end{array} \\right)\\) is given by the formula     \\(\\chi(\\lambda) = \\left| \\begin{array}{ccc} \\lambda - a &amp; -b &amp; -c \\\\ -d &amp; \\lambda - e &amp; -f \\\\ -g &amp; -h &amp; \\lambda - i \\end{array} \\right|.\\) . This is a long line: \\(\\chi(\\lambda) = a e i-a e \\lambda -a f h-a i \\lambda +a \\lambda ^2-b d i+b d \\lambda +b f g+c d h-c e g+c g \\lambda -e i \\lambda +e \\lambda ^2+f h \\lambda +i \\lambda ^2-\\lambda ^3\\) . Does it work in different MD elements? . CONTENTS . | MathJax v3 Tests | Math \\(x^2\\) in heading 1 . | Math \\(x^2\\) in heading 2 . | Math \\(x^2\\) in heading 3 . | Math \\(x^2\\) in heading 4 | . | . | . | . ",
+    "url": "/just-the-docs-tests/docs/math/mathjax3/tests.html",
+    "relUrl": "/docs/math/mathjax3/tests.html"
+  },"34": {
+    "doc": "MathJax v3 Tests",
+    "title": "Math \\(x^2\\) in heading 1",
+    "content": " ",
+    "url": "/just-the-docs-tests/docs/math/mathjax3/tests.html#math-x2-in-heading-1",
+    "relUrl": "/docs/math/mathjax3/tests.html#math-x2-in-heading-1"
+  },"35": {
+    "doc": "MathJax v3 Tests",
+    "title": "Math \\(x^2\\) in heading 2",
+    "content": "Math \\(x^2\\) in heading 3 . Math \\(x^2\\) in heading 4 . \\(x_1, x_2, \\dots, x_N\\) should not conflict with _ italics? . \\((f*g*h)(x)\\) should not conflict with * syntax? . \\([a+b](c+d)\\) should not conflict with link syntax? . math \\(x^2\\) in emphasis . math \\(x^2\\) in bold . math \\(x^2\\) in link . \\(\\href{http://www.mathjax.org/}{\\mathsf{link}}\\) in math . math $$x^2$$ in code . math \\(x^2\\) in strikethrough (doesn’t strike through the math) . In tables . | Left-Aligned | Center Aligned | Right Aligned | . | \\(a+b\\) | some wordy text | $1600 | . | \\(a+b\\) | some wordy text | $1600 | . | \\(a+b\\) | some wordy text | $1600 | . The following works only when the matrix is all on one line, due to a kramdown limitation: . | Left-Aligned | Center Aligned | Right Aligned | . | \\(a+b\\) | some wordy text | $1600 | . |   | \\(A=\\mathbf{A}=\\underline{A}=\\begin{pmatrix}a_{11} &amp; a_{12} &amp; \\cdots &amp; a_{1n}\\\\a_{21} &amp; a_{22} &amp; \\cdots &amp; a_{2n}\\\\\\vdots &amp; \\vdots &amp; &amp; \\vdots\\\\a_{m1} &amp; a_{m2} &amp; \\cdots &amp; a_{mn}\\\\\\end{pmatrix} = (a_{ij})\\) | $12 | . |   |   | $1 | . In image captions . The alt string doesn’t work . | MathJax v3.1.2 issue with SVG output: \\text{...} overlaps math. &#8617; . | . ",
+    "url": "/just-the-docs-tests/docs/math/mathjax3/tests.html#math-x2-in-heading-2",
+    "relUrl": "/docs/math/mathjax3/tests.html#math-x2-in-heading-2"
+  },"36": {
+    "doc": "KaTeX Tests",
+    "title": "\\(\\KaTeX\\) Tests",
+    "content": "This page tests \\(\\LaTeX\\) rendering using \\(\\KaTeX\\) with just-the-docs as a remote theme. It was copied from a test in markdown-preview-plus, and adjusted to use kramdown math blocks. Preview dark color scheme . \\(x\\) math at the start of a line . Nested: \\(M = \\text{while $e^2$ do $c^2$ end}\\) . Numbered equations . Automatic equation numbering is supported by KaTeX. \\[\\begin{equation} \\int_0^x \\sin(x) dx \\end{equation}\\] \\label and \\eqref are not yet implemented. Using manual tags and HTML links: . \\[\\begin{equation} \\int_0^x \\sin(x) dx \\htmlId{eq:test}{\\tag{1}} \\end{equation}\\] Link to equation \\(\\href{#eq:test}{(1)}\\) . Blockquotes . | A block quote | With a list inside | With \\(math\\) | . Math environment syntax testing . Inline Math should work with $$ \\(\\frac{x+y}{y}\\) but not \\( (\\frac{x+y}{y}) . Use $$ on separate lines: . \\[\\int_{-\\infty}^\\infty e^{-x^2} = \\sqrt{\\pi}\\] Use $$ on the same line: \\(\\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}\\) . Use $$ on separate lines: . \\[a+b\\] Use $$ on the same line: \\(E=mc^2\\) . Some Tex functions . \\(k \\times k\\), \\(n \\times 2\\), \\(2 \\times n\\), \\(\\times\\) . \\(x \\cdot y\\), \\(\\cdot\\) . \\[\\sqrt{x^2+y^2+z^2}\\] \\[\\alpha \\beta \\gamma\\] \\[\\begin{aligned} x\\ &amp;= y\\\\ mc^2\\ &amp;= E \\end{aligned}\\] . Escaped math environments . In the following examples no math environments should render: . a $5, a $10 and a $100 Bill. All McScrooge sees . $$ . and even more: . $$ . \\[x+y] \\(x+y) . $x . \\$ . \\$, \\[ \\], $x$ . Testing \\newcommand . For all \\(x\\) and \\(y\\) in \\(\\mathbb{R}^k\\) it is true that \\(\\newcommand{\\sca}[1]{\\langle #1 \\rangle} |\\sca{x,y}|^2 \\le \\sca{x,x} \\cdot \\sca{y,y},\\) . \\newcommand{\\scalong}[1]{(#1_1,\\dots,#1_k)} . where \\(\\sca{\\cdot,\\cdot}\\) denotes the inner product \\(\\sca{\\scalong{x}, \\scalong{x}} = \\sum_{i=1}^k x_i y_i\\). \\(\\newcommand{\\scalong}[1]{(#1_1,\\dots,#1_k)}\\)where \\(\\sca{\\cdot,\\cdot}\\) denotes the inner product \\(\\sca{\\scalong{x}, \\scalong{x}} = \\sum_{i=1}^k x_i y_i\\). Testing several math fonts . \\[p(\\mathbf{m}) \\sim \\mathcal{N}(\\mathbf{m}) e^{-\\sum_{i} \\beta_i m_i}\\] \\[\\langle \\vec{m} \\rangle = \\frac{1}{Z(\\vec{\\beta})}\\vec{m}(\\mu) \\sum_{\\mu\\in\\mathcal{G}} e^{-\\vec{\\beta}\\cdot\\vec{m}(\\mu)}\\] . Notice below that the $$-separated display math doesn’t have a blank line before and after (i.e. in an actual \\(\\LaTeX\\) document it wouldn’t be placed in a separate paragraph): . The characteristic polynomial \\(\\chi(\\lambda)\\) of the \\(3 \\times 3\\) matrix     \\(\\left( \\begin{array}{ccc} a &amp; b &amp; c \\\\ d &amp; e &amp; f \\\\ g &amp; h &amp; i \\end{array} \\right)\\) is given by the formula     \\(\\chi(\\lambda) = \\left| \\begin{array}{ccc} \\lambda - a &amp; -b &amp; -c \\\\ -d &amp; \\lambda - e &amp; -f \\\\ -g &amp; -h &amp; \\lambda - i \\end{array} \\right|.\\) . This is a long line: \\(\\chi(\\lambda) = a e i-a e \\lambda -a f h-a i \\lambda +a \\lambda ^2-b d i+b d \\lambda +b f g+c d h-c e g+c g \\lambda -e i \\lambda +e \\lambda ^2+f h \\lambda +i \\lambda ^2-\\lambda ^3\\) . Does it work in different MD elements? . CONTENTS . | \\(\\KaTeX\\) Tests | Math \\(x^2\\) in heading 1 . | Math \\(x^2\\) in heading 2 . | Math \\(x^2\\) in heading 3 . | Math \\(x^2\\) in heading 4 | . | . | . | . ",
+    "url": "/just-the-docs-tests/docs/math/katex/tests.html#katex-tests",
+    "relUrl": "/docs/math/katex/tests.html#katex-tests"
+  },"37": {
+    "doc": "KaTeX Tests",
+    "title": "Math \\(x^2\\) in heading 1",
+    "content": " ",
+    "url": "/just-the-docs-tests/docs/math/katex/tests.html#math-x2-in-heading-1",
+    "relUrl": "/docs/math/katex/tests.html#math-x2-in-heading-1"
+  },"38": {
+    "doc": "KaTeX Tests",
+    "title": "Math \\(x^2\\) in heading 2",
+    "content": "Math \\(x^2\\) in heading 3 . Math \\(x^2\\) in heading 4 . \\(x_1, x_2, \\dots, x_N\\) should not conflict with _ italics? . \\((f*g*h)(x)\\) should not conflict with * syntax? . \\([a+b](c+d)\\) should not conflict with link syntax? . math \\(x^2\\) in emphasis . math \\(x^2\\) in bold . math \\(x^2\\) in link . \\(\\href{http://www.mathjax.org/}{\\mathsf{link}}\\) in math . math $$x^2$$ in code . math \\(x^2\\) in strikethrough (doesn’t strike through the math) . In tables . | Left-Aligned | Center Aligned | Right Aligned | . | \\(a+b\\) | some wordy text | $1600 | . | \\(a+b\\) | some wordy text | $1600 | . | \\(a+b\\) | some wordy text | $1600 | . The following works only when the matrix is all on one line, due to a kramdown limitation: . | Left-Aligned | Center Aligned | Right Aligned | . | \\(a+b\\) | some wordy text | $1600 | . |   | \\(A=\\mathbf{A}=\\underline{A}=\\begin{pmatrix}a_{11} &amp; a_{12} &amp; \\cdots &amp; a_{1n}\\\\a_{21} &amp; a_{22} &amp; \\cdots &amp; a_{2n}\\\\\\vdots &amp; \\vdots &amp; &amp; \\vdots\\\\a_{m1} &amp; a_{m2} &amp; \\cdots &amp; a_{mn}\\\\\\end{pmatrix} = (a_{ij})\\) | $12 | . |   |   | $1 | . In image captions . The alt string doesn’t work . ",
+    "url": "/just-the-docs-tests/docs/math/katex/tests.html#math-x2-in-heading-2",
+    "relUrl": "/docs/math/katex/tests.html#math-x2-in-heading-2"
+  },"39": {
+    "doc": "KaTeX Tests",
+    "title": "KaTeX Tests",
+    "content": " ",
+    "url": "/just-the-docs-tests/docs/math/katex/tests.html",
+    "relUrl": "/docs/math/katex/tests.html"
+  },"40": {
+    "doc": "MathJax v2 Tests",
+    "title": "MathJax v2 Tests",
+    "content": "This page tests \\(\\mathrm{\\LaTeX}\\) rendering using MathJax v2 with just-the-docs as a remote theme. It was copied from a test in markdown-preview-plus, and adjusted to use kramdown math blocks. Preview dark color scheme . \\(x\\) math at the start of a line . Nested: \\(M = \\text{while $e^2$ do $c^2$ end}\\) . Numbered equations . \\[\\begin{equation} \\int_0^x \\sin(x) dx \\label{eq:test} \\end{equation}\\] Link to equation \\(\\eqref{eq:test}\\) . Blockquotes . | A block quote | With a list inside | With \\(math\\) | . Math environment syntax testing . Inline Math should work with $$ \\(\\frac{x+y}{y}\\) but not \\( (\\frac{x+y}{y}) . Use $$ on separate lines: . \\[\\int_{-\\infty}^\\infty e^{-x^2} = \\sqrt{\\pi}\\] Use $$ on the same line: \\(\\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}\\) . Use $$ on separate lines: . \\[a+b\\] Use $$ on the same line: \\(E=mc^2\\) . Some Tex functions . \\(k \\times k\\), \\(n \\times 2\\), \\(2 \\times n\\), \\(\\times\\) . \\(x \\cdot y\\), \\(\\cdot\\) . \\[\\sqrt{x^2+y^2+z^2}\\] \\[\\alpha \\beta \\gamma\\] \\[\\begin{aligned} x\\ &amp;= y\\\\ mc^2\\ &amp;= E \\end{aligned}\\] . Escaped math environments . In the following examples no math environments should render: . a $5, a $10 and a $100 Bill. All McScrooge sees . $$ . and even more: . $$ . \\[x+y] \\(x+y) . $x . \\$ . \\$, \\[ \\], $x$ . Testing \\newcommand . For all \\(x\\) and \\(y\\) in \\(\\mathbb{R}^k\\) it is true that \\(\\newcommand{\\sca}[1]{\\langle #1 \\rangle} |\\sca{x,y}|^2 \\le \\sca{x,x} \\cdot \\sca{y,y},\\) . \\newcommand{\\scalong}[1]{(#1_1,\\dots,#1_k)} . where \\(\\sca{\\cdot,\\cdot}\\) denotes the inner product \\(\\sca{\\scalong{x}, \\scalong{x}} = \\sum_{i=1}^k x_i y_i\\). \\(\\newcommand{\\scalong}[1]{(#1_1,\\dots,#1_k)}\\)where \\(\\sca{\\cdot,\\cdot}\\) denotes the inner product \\(\\sca{\\scalong{x}, \\scalong{x}} = \\sum_{i=1}^k x_i y_i\\). Testing several math fonts . \\[p(\\mathbf{m}) \\sim \\mathcal{N}(\\mathbf{m}) e^{-\\sum_{i} \\beta_i m_i}\\] \\[\\langle \\vec{m} \\rangle = \\frac{1}{Z(\\vec{\\beta})}\\vec{m}(\\mu) \\sum_{\\mu\\in\\mathcal{G}} e^{-\\vec{\\beta}\\cdot\\vec{m}(\\mu)}\\] . Notice below that the $$-separated display math doesn’t have a blank line before and after (i.e. in an actual \\(\\LaTeX\\) document it wouldn’t be placed in a separate paragraph): . The characteristic polynomial \\(\\chi(\\lambda)\\) of the \\(3 \\times 3\\) matrix     \\(\\left( \\begin{array}{ccc} a &amp; b &amp; c \\\\ d &amp; e &amp; f \\\\ g &amp; h &amp; i \\end{array} \\right)\\) is given by the formula     \\(\\chi(\\lambda) = \\left| \\begin{array}{ccc} \\lambda - a &amp; -b &amp; -c \\\\ -d &amp; \\lambda - e &amp; -f \\\\ -g &amp; -h &amp; \\lambda - i \\end{array} \\right|.\\) . This is a long line: \\(\\chi(\\lambda) = a e i-a e \\lambda -a f h-a i \\lambda +a \\lambda ^2-b d i+b d \\lambda +b f g+c d h-c e g+c g \\lambda -e i \\lambda +e \\lambda ^2+f h \\lambda +i \\lambda ^2-\\lambda ^3\\) . Does it work in different MD elements? . CONTENTS . | MathJax v2 Tests | Math \\(x^2\\) in heading 1 . | Math \\(x^2\\) in heading 2 . | Math \\(x^2\\) in heading 3 . | Math \\(x^2\\) in heading 4 | . | . | . | . ",
+    "url": "/just-the-docs-tests/docs/math/mathjax2/tests.html",
+    "relUrl": "/docs/math/mathjax2/tests.html"
+  },"41": {
+    "doc": "MathJax v2 Tests",
+    "title": "Math \\(x^2\\) in heading 1",
+    "content": " ",
+    "url": "/just-the-docs-tests/docs/math/mathjax2/tests.html#math-x2-in-heading-1",
+    "relUrl": "/docs/math/mathjax2/tests.html#math-x2-in-heading-1"
+  },"42": {
+    "doc": "MathJax v2 Tests",
+    "title": "Math \\(x^2\\) in heading 2",
+    "content": "Math \\(x^2\\) in heading 3 . Math \\(x^2\\) in heading 4 . \\(x_1, x_2, \\dots, x_N\\) should not conflict with _ italics? . \\((f*g*h)(x)\\) should not conflict with * syntax? . \\([a+b](c+d)\\) should not conflict with link syntax? . math \\(x^2\\) in emphasis . math \\(x^2\\) in bold . math \\(x^2\\) in link . \\(\\href{http://www.mathjax.org/}{\\mathsf{link}}\\) in math . math $$x^2$$ in code . math \\(x^2\\) in strikethrough (doesn’t strike through the math) . In tables . | Left-Aligned | Center Aligned | Right Aligned | . | \\(a+b\\) | some wordy text | $1600 | . | \\(a+b\\) | some wordy text | $1600 | . | \\(a+b\\) | some wordy text | $1600 | . The following works only when the matrix is all on one line, due to a kramdown limitation: . | Left-Aligned | Center Aligned | Right Aligned | . | \\(a+b\\) | some wordy text | $1600 | . |   | \\(A=\\mathbf{A}=\\underline{A}=\\begin{pmatrix}a_{11} &amp; a_{12} &amp; \\cdots &amp; a_{1n}\\\\a_{21} &amp; a_{22} &amp; \\cdots &amp; a_{2n}\\\\\\vdots &amp; \\vdots &amp; &amp; \\vdots\\\\a_{m1} &amp; a_{m2} &amp; \\cdots &amp; a_{mn}\\\\\\end{pmatrix} = (a_{ij})\\) | $12 | . |   |   | $1 | . In image captions . The alt string doesn’t work . ",
+    "url": "/just-the-docs-tests/docs/math/mathjax2/tests.html#math-x2-in-heading-2",
+    "relUrl": "/docs/math/mathjax2/tests.html#math-x2-in-heading-2"
+  },"43": {
+    "doc": "Visited code links",
+    "title": "Visited code links",
+    "content": "On Safari (13.1.2, macOS 10.15.6) code in a visited link has a dark border. This doesn’t happen in Firefox (79.0). The following setting in _config.yml fixes the issue in Safari: . color_scheme: fix-visited . by loading the following CSS: . a:visited code { border-color: $border-color; } . some unlinked code . some code in a link . some plain text in a link . ",
+    "url": "/just-the-docs-tests/docs/css/visited.html",
+    "relUrl": "/docs/css/visited.html"
+  },"44": {
+    "doc": "Link Wrap",
+    "title": "Link Wrap",
+    "content": "Here is a long link anchor that should break. Here is a long link anchor that should break. Here is a long link anchor that should break. Here is a long link anchor that should break. ",
+    "url": "/just-the-docs-tests/docs/css/wrap.html",
+    "relUrl": "/docs/css/wrap.html"
+  }
+}
