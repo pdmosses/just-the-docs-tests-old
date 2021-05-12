@@ -12,38 +12,38 @@ In `_includes/head_custom.html` add (for version 0.13.3):
 ```html
 {% case page.math %}
      
-{% when "katex" %}
+  {% when "katex" %}
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.3/dist/katex.min.css" integrity="sha384-ThssJ7YtjywV52Gj4JE/1SQEDoMEckXyhkFVwaf4nDSm5OBlXeedVYjuuUd0Yua+" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13/dist/katex.min.css" crossorigin="anonymous">
 
-  <!-- The loading of KaTeX is deferred to speed up page rendering -->
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.3/dist/katex.min.js" integrity="sha384-Bi8OWqMXO1ta+a4EPkZv7bYGIes7C3krGSZoTGNTAnAn5eYQc7IIXrJ/7ck1drAi" crossorigin="anonymous"></script>
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13/dist/katex.min.js" crossorigin="anonymous"></script>
 
-  <!-- To automatically render math in text elements, include the auto-render extension: -->
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.3/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
-  onload="renderMathInElement(document.body, {
-    globalGroup: true,
-    trust: true,
-    strict: false,
-    throwOnError: false,
-    macros: {
-      '\\\n': '\\ '
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+    onload="renderMathInElement(document.body, {
+      globalGroup: true,
+      trust: true,
+      strict: false,
+      throwOnError: false,
+      macros: {
+        '\\\n': '\\ '
+      }
+    });"></script>
+
+    <!-- Override the KaTeX default of font-size: 1.21em -->
+    <style>
+      .katex { 
+        font-size: 1em; 
+      }
+    </style>
+
+    <!-- Potential workaround for KaTeX 0.13 bug https://github.com/KaTeX/KaTeX/issues/2815 -->
+    <style>
+      .katex .vlist-t2 > .vlist-r:nth-child(2) > .vlist {
+        pointer-events: none;
     }
-  });"></script>
-
-  <!-- Override the KaTeX default of font-size: 1.21em -->
-  <style>
-    .katex { 
-      font-size: 1em; 
-    }
-  </style>
-
-  <!-- Potential workaround for KaTeX 0.13 bug https://github.com/KaTeX/KaTeX/issues/2815 -->
-  <style>
-    .katex .vlist-t2 > .vlist-r:nth-child(2) > .vlist {
-      pointer-events: none;
-  }
-  </style>
+    </style>
    
 {% endcase %}
 ```
