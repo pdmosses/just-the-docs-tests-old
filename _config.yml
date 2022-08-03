@@ -18,11 +18,11 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Just the Docs Tests
+title: Just the Docs Tests - Old
 # email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   This site tests some features of Just the Docs, a remote theme for Jekyll on GitHub Pages.
-baseurl: "/just-the-docs-tests" # the subpath of your site, e.g. /blog
+baseurl: "/just-the-docs-tests-old" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
 # github_username:  jekyll
@@ -31,7 +31,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 # theme: minima
-remote_theme: pmarsceill/just-the-docs@v0.3.3
+remote_theme: just-the-docs/just-the-docs@v0.3.3
 plugins:
   - jekyll-feed
   - jekyll-remote-theme
@@ -69,12 +69,14 @@ defaults:
 # Aux links for the upper right navigation
 aux_links:
   "Just the Docs Tests on GitHub":
-    - "//github.com/pdmosses/just-the-docs-tests"
+    - "//github.com/pdmosses/just-the-docs-tests-old"
   
 # Uncomment to test fixes for list alignment:
 # color_scheme: fix-lists
 
 # Uncomment to test fixes for visited code links:
 # color_scheme: fix-visited
+
+color_scheme: dark
 
 exclude: [docs/math/katex/issues.md]
