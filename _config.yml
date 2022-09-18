@@ -77,6 +77,6 @@ aux_links:
 # Uncomment to test fixes for visited code links:
 # color_scheme: fix-visited
 
-color_scheme: dark
+# color_scheme: dark
 
 exclude: [docs/math/katex/issues.md]
